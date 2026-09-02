@@ -1,5 +1,5 @@
-import LeftSidebar from "@/components/ui/layout/LeftSidebar";
-import Navbar from "@/components/ui/layout/Navbar";
+import LeftSidebar from "@/components/layout/LeftSidebar";
+import Navbar from "@/components/layout/Navbar";
 
 export default async function CoreGroupLayout({
   children,
