@@ -1,7 +1,11 @@
-import { Search } from "lucide-react";
+"use client";
+
+import { UserButton, SignedIn, SignedOut } from "@neondatabase/auth/react";
+import { Bell, Search } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import { Button, buttonVariants } from "../ui/button";
 import { Input } from "../ui/input";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   return (
@@ -29,6 +33,49 @@ const Navbar = () => {
             aria-label="Search posts"
           />
         </div>
+
+        <SignedIn>
+          <Link
+            href="/submit"
+            className={cn(
+              buttonVariants({ variant: "outline", size: "sm" }),
+              "hidden sm:inline-flex",
+            )}
+          >
+            Create
+          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-muted-foreground"
+            aria-label="Notifications"
+          >
+            <Bell className="size-5" />
+          </Button>
+          <UserButton className="bg-gray-600 hover:bg-gray-700 text-white" />
+        </SignedIn>
+
+        <SignedOut>
+          <div className="flex items-center gap-2">
+            <Link
+              href={"/auth/sign-in"}
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "default" }),
+              )}
+            >
+              Log In
+            </Link>
+            <Link
+              href={"/auth/sign-up"}
+              className={cn(buttonVariants({ variant: "default" }))}
+            >
+              Sign Up
+            </Link>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
+        </SignedOut>
       </div>
     </header>
   );

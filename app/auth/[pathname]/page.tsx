@@ -12,7 +12,6 @@ export default async function AuthPage({
         <div className="w-full max-w-md">
           <AuthView pathname={pathname} />
         </div>
-        <AuthView />
       </div>
     </div>
   );
